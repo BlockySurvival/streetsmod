@@ -1,3 +1,10 @@
 default
+awards?
+digilines?
 intllib?
+mesecons?
+moreblocks?
+prefab?
 smartfs?
+technic?
+wool?
