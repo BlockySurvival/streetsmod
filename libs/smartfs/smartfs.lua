@@ -137,14 +137,14 @@ function smartfs._makeState_(form,player,params,is_inv)
 			end
 		end,
 		load = function(self,file)
-			local file = io.open(file, "r")
+			file = io.open(file, "r")
 			if file then
 				local table = minetest.deserialize(file:read("*all"))
 				if type(table) == "table" then
 					if table.size then
 						self._size = table.size
 					end
-					for key,val in pairs(table.ele) do
+					for _,val in pairs(table.ele) do
 						self:element(val.type,val)
 					end
 					return true
@@ -163,7 +163,7 @@ function smartfs._makeState_(form,player,params,is_inv)
 				res.ele[key] = val.data
 			end
 
-			local file = io.open(file, "w")
+			file = io.open(file, "w")
 			if file then
 				file:write(minetest.serialize(res))
 				file:close()
@@ -222,7 +222,7 @@ function smartfs._makeState_(form,player,params,is_inv)
 				name = data.name,
 				root = self,
 				data = data,
-				remove = function(self)
+				remove = function(self) -- luacheck: ignore
 					self.root._ele[self.name] = nil
 				end
 			}
