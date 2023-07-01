@@ -21,7 +21,7 @@ end)
 
 l = smartfs.create("smartfs:load",function(state)
 	state:load(minetest.get_modpath("smartfs").."/example.smartfs")
-	state:get("btn"):click(function(self,state)
+	state:get("btn"):click(function(_)
 		print("Button clicked!")
 	end)
 	return true
@@ -50,7 +50,7 @@ minetest.register_chatcommand("sfs_d", {
 	func = function(name, param)
 		local state = smartfs.dynamic("smartfs:dyn_form", name)
 		state:load(minetest.get_modpath("smartfs").."/example.smartfs")
-		state:get("btn"):click(function(self,state)
+		state:get("btn"):click(function(_)
 			print("Button clicked!")
 		end)
 		state:show()
